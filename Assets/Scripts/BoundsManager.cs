@@ -7,7 +7,8 @@ public class BoundsManager : MonoBehaviour
 {
 	[SerializeField]
 	private float margin = 1;
-	private PolygonCollider2D polyCollider;
+	private PolygonCollider2D hardBounds;
+	private BoxCollider2D triggerBounds;
 	private Vector2 p1;
 	private Vector2 p2;
 	private Vector2 p3;
@@ -18,7 +19,8 @@ public class BoundsManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        polyCollider = GetComponent<PolygonCollider2D>();
+        hardBounds = GetComponent<PolygonCollider2D>();
+		triggerBounds = GetComponentInChildren<BoxCollider2D>();
 		CreateMargin();
     }
 
@@ -30,9 +32,16 @@ public class BoundsManager : MonoBehaviour
 		p3 = camera.ScreenToWorldPoint(new Vector3(camera.pixelWidth, camera.pixelHeight));
 		p4 = camera.ScreenToWorldPoint(new Vector3(0, camera.pixelHeight));
 
-		polyCollider.pathCount = 2;
-		polyCollider.SetPath(0, new Vector2[] { p1, p2, p3, p4 });
-		polyCollider.SetPath(1, new Vector2[] { p1 + new Vector2(-margin, -margin), p2 + new Vector2(margin, -margin), p3 + new Vector2(margin, margin), p4 + new Vector2(-margin, margin) });
+		hardBounds.pathCount = 2;
+		hardBounds.SetPath(0, new Vector2[] { p1, p2, p3, p4 });
+		hardBounds.SetPath(1, new Vector2[] { p1 + new Vector2(-margin, -margin), p2 + new Vector2(margin, -margin), p3 + new Vector2(margin, margin), p4 + new Vector2(-margin, margin) });
+
+		triggerBounds.size = new Vector2(p2.x - p1.x, p3.y - p2.y);
+	}
+
+	public Vector2 GetRandomPointOnPerimeter()
+	{
+		return GetPointOnPerimeter(Random.value);
 	}
 
 	private Vector2 GetPointOnPerimeter(float t)
@@ -59,5 +68,10 @@ public class BoundsManager : MonoBehaviour
 
 		float t_onEdge = (t - (perimeterTraversal - edgeLength) / Perimeter) * (Perimeter / edgeLength);
 		return Vector2.Lerp(startPoint, endPoint, t_onEdge);
+	}
+
+	public Vector2 ClosetsPointOnBounds(Vector2 worldPos)
+	{
+		return hardBounds.ClosestPoint(worldPos);
 	}
 }

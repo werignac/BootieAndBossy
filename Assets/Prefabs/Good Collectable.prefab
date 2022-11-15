@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7261989052473740395}
   - component: {fileID: 7723797821694954211}
   m_Layer: 0
-  m_Name: phys_collisions
+  m_Name: collectable_phys_collisions
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
