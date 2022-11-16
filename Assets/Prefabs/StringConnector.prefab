@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1515277735915809207}
   - component: {fileID: 9114175571854345914}
+  - component: {fileID: 2299044678592454793}
   m_Layer: 0
   m_Name: string_phys_collisions
   m_TagString: Untagged
@@ -58,6 +59,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.2, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &2299044678592454793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1007759368520348411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df29c501aecab414d803a247ed2b3f9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerEnterMessage: OnRopeCollisionEnter
+  triggerStayMessage: OnRopeCollisionStay
+  triggerExitMessage: OnRopeCollisionExit
 --- !u!1 &2675152828753024417
 GameObject:
   m_ObjectHideFlags: 0
