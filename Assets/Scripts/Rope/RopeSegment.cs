@@ -14,6 +14,8 @@ public class RopeSegment : MonoBehaviour
 	[Min(0.001f)]
 	private float targetLength;
 
+	private bool lockedLength = false;
+
 	private static float lengthChangeRate = 1f;
 
 	private BoxCollider2D boxCollider;
@@ -52,6 +54,7 @@ public class RopeSegment : MonoBehaviour
 	private void SetTargetLength(float _targetLength)
 	{
 		targetLength = _targetLength;
+		lockedLength = false;
 	}
 
 	public void Initialze(RopeSegment prevSeg, RopeSegment nextSeg)
@@ -81,9 +84,36 @@ public class RopeSegment : MonoBehaviour
 		RopeSegment prevSeg = connectorB.attachedRigidbody.GetComponent<RopeSegment>();
 
 		// Find Middle
+		Vector3 middlePos = transform.position;
+
 		// Set nextSeg and prevSeg to point to the middle
+		Vector3 prevSegBackPos = prevSeg.transform.TransformPoint(prevSeg.connectorB.connectedAnchor);
+		Vector3 nextSegFrontPos = nextSeg.transform.TransformPoint(nextSeg.connectorA.anchor);
+
+		Vector3 prevSegPosition = (middlePos + prevSegBackPos) / 2f;
+		Vector3 prevSegDiff = (middlePos - prevSegBackPos).normalized;
+		Vector3 nextSegPosition = (middlePos + nextSegFrontPos) / 2f;
+		Vector3 nextSegDiff = (nextSegFrontPos - middlePos).normalized;
+
+		float prevSegAngle = Mathf.Atan2(prevSegDiff.y, prevSegDiff.x) * Mathf.Rad2Deg;
+		float nextSegAngle = Mathf.Atan2(nextSegDiff.y, nextSegDiff.x) * Mathf.Rad2Deg;
+
+		prevSeg.transform.position = prevSegPosition;
+		prevSeg.transform.rotation = Quaternion.Euler(0, 0, prevSegAngle - 90f);
+		prevSeg.connectorB.connectedAnchor = prevSeg.transform.InverseTransformPoint(prevSegBackPos);
+
+		nextSeg.transform.position = nextSegPosition;
+		nextSeg.transform.rotation = Quaternion.Euler(0, 0, nextSegAngle - 90f);
+		nextSeg.connectorA.anchor = nextSeg.transform.InverseTransformPoint(nextSegFrontPos);
+
 		// Make prevSeg's connectorB nextSeg's connector A
+		prevSeg.connectorA.anchor = prevSeg.transform.InverseTransformPoint(middlePos);
+		prevSeg.connectorA.connectedAnchor = nextSeg.transform.InverseTransformPoint(middlePos);
+		prevSeg.connectorA.connectedBody = nextSeg.GetComponent<Rigidbody2D>();
+		nextSeg.connectorB = prevSeg.connectorA;
+
 		// Destroy self
+		DestroyImmediate(gameObject);
 	}
 
 	private void Start()
@@ -95,19 +125,24 @@ public class RopeSegment : MonoBehaviour
 	// Update is called once per frame
 	void Update()
     {
-		float length = Length;
-		float lengthDiff = targetLength - length;
-		if (Mathf.Abs(lengthDiff) > 0.01f)
+		if (!lockedLength)
 		{
-			float maxDiff = Time.deltaTime * lengthChangeRate;
+			float length = Length;
+			float lengthDiff = targetLength - length;
+			if (Mathf.Abs(lengthDiff) > 0.01f)
+			{
+				float maxDiff = Time.deltaTime * lengthChangeRate;
 
-			float deltaLength = Mathf.Clamp(lengthDiff, -maxDiff, maxDiff);
+				float deltaLength = Mathf.Clamp(lengthDiff, -maxDiff, maxDiff);
 
-			Vector3 deltaAnchor = Axis * deltaLength;
+				Vector3 deltaAnchor = Axis * deltaLength;
 
-			SetAnchor(connectorA, RelPos(connectorA) + deltaAnchor / 2);
-			SetAnchor(connectorB, RelPos(connectorB) - deltaAnchor / 2);
-			boxCollider.size = new Vector2(boxCollider.size.x, length + deltaLength);
+				SetAnchor(connectorA, RelPos(connectorA) + deltaAnchor / 2);
+				SetAnchor(connectorB, RelPos(connectorB) - deltaAnchor / 2);
+				boxCollider.size = new Vector2(boxCollider.size.x, length + deltaLength);
+			}
+			else
+				lockedLength = true;
 		}
 	}
 }

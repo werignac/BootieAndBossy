@@ -25,6 +25,8 @@ namespace werignac.Rope
 		[SerializeField, Range(1, 10)]
 		private float segmentsPerLength = 1;
 
+		private float lastSegmentLength = 0;
+
 		private void Start()
 		{
 			joints = GetComponentsInChildren<HingeJoint2D>();
@@ -32,8 +34,15 @@ namespace werignac.Rope
 
 		private void Update()
 		{
+			int segmentCount = Mathf.CeilToInt(ropeLength * segmentsPerLength);
+			float segmentLength = ropeLength / segmentCount;
+
 			CheckRopeSegments();
-			BroadcastMessage("SetTargetLength", 1 / segmentsPerLength, SendMessageOptions.RequireReceiver);
+			if (segmentLength != lastSegmentLength)
+			{
+				BroadcastMessage("SetTargetLength", 1 / segmentsPerLength, SendMessageOptions.RequireReceiver);
+				lastSegmentLength = segmentLength;
+			}
 			QueryRopeInfo();
 		}
 
@@ -50,6 +59,11 @@ namespace werignac.Rope
 			while(transform.childCount < segmentCount)
 			{
 				AddSegment();
+			}
+
+			while(transform.childCount > segmentCount)
+			{
+				RemoveSegment();
 			}
 		}
 
@@ -72,6 +86,9 @@ namespace werignac.Rope
 		{
 			int trueSegmentCount = transform.childCount;
 			int middle = trueSegmentCount / 2;
+
+			transform.GetChild(middle).GetComponent<RopeSegment>().Merge();
+			joints = GetComponentsInChildren<HingeJoint2D>();
 		}
 
 		private void OnRopeCollisionEnter(Collision2D collision)

@@ -55,6 +55,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8585543716336344911, guid: 85cba7bd31124e94e9992dacaef94287, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8585543716336344912, guid: 85cba7bd31124e94e9992dacaef94287, type: 3}
       propertyPath: thrustAction.m_SingletonActionBindings.Array.data[1].m_Path
       value: <Keyboard>/downArrow
