@@ -14,6 +14,11 @@ namespace werignac.Rope
 		[SerializeField]
 		private int resolution = 10;
 		
+		enum RopeSpline {BEZIER, CATMULL_ROM, MIXED}
+
+		[SerializeField]
+		private RopeSpline v_spline = RopeSpline.BEZIER;
+
 		private int PositionCount (HingeJoint2D[] joints) { return resolution * joints.Length; }
 
 		// Start is called before the first frame update
@@ -31,12 +36,25 @@ namespace werignac.Rope
 #if UNITY_EDITOR
 			Vector3[] positions = new Vector3[positionCount];
 
-			Curve curve1 = new Bezier(GenerateControlPointsForBezier(info));
-			Curve curve2 = new MultiCatmullRom(GenerateControlPointsForCatmullRom(info));
-			Curve curve3 = new InterpolationCurve(curve1, curve2);
+			Curve curve = null;
+
+			switch (v_spline)
+			{
+				case RopeSpline.BEZIER:
+					curve = new Bezier(GenerateControlPointsForBezier(info));
+					break;
+				case RopeSpline.CATMULL_ROM:
+					curve = new MultiCatmullRom(GenerateControlPointsForCatmullRom(info));
+					break;
+				case RopeSpline.MIXED:
+					Curve bezier = new Bezier(GenerateControlPointsForBezier(info));
+					Curve catmullRom = new MultiCatmullRom(GenerateControlPointsForCatmullRom(info));
+					curve = new InterpolationCurve(bezier, catmullRom);
+					break;
+			}
 
 			for (int i = 0; i < positionCount; i++)
-				positions[i] = curve3.Evaluate((float)i / positionCount);
+				positions[i] = curve.Evaluate((float)i / positionCount);
 #else
 		Vector3[] controlPoints = new Vector3[joints.Length];
 
