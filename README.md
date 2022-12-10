@@ -5,6 +5,8 @@ Developed in Unity by werignac.
 ### Razor Pitch
 Bootie and Bossy is a 2-player coop game based on a podcast where the players control two kneedles connected by a strand of yarn to collect good items and avoid the bad. 
 
+![](https://github.com/werignac/BootieAndBossy/blob/main/Demo%20Materials/15fps_bootie_and_bossy_demo.gif)
+
 ### Current Features
 - Two knitting needles controlled by WASD and the arrow keys.
 - A resizeable thread of yarn that connects the needles.
