@@ -18,7 +18,7 @@ public class RopeSegment : MonoBehaviour
 
 	private static float lengthChangeRate = 1f;
 
-	private BoxCollider2D boxCollider;
+	private CapsuleCollider2D capsuleCollider;
 	new private Rigidbody2D rigidbody;
 
 	private Vector3 Axis { get {
@@ -118,7 +118,7 @@ public class RopeSegment : MonoBehaviour
 
 	private void Start()
 	{
-		boxCollider = GetComponentInChildren<BoxCollider2D>();
+		capsuleCollider = GetComponentInChildren<CapsuleCollider2D>();
 		rigidbody = GetComponent<Rigidbody2D>();
 	}
 
@@ -131,6 +131,8 @@ public class RopeSegment : MonoBehaviour
 			float lengthDiff = targetLength - length;
 			if (Mathf.Abs(lengthDiff) > 0.01f)
 			{
+				Debug.Log("Changing Length");
+
 				float maxDiff = Time.deltaTime * lengthChangeRate;
 
 				float deltaLength = Mathf.Clamp(lengthDiff, -maxDiff, maxDiff);
@@ -139,7 +141,7 @@ public class RopeSegment : MonoBehaviour
 
 				SetAnchor(connectorA, RelPos(connectorA) + deltaAnchor / 2);
 				SetAnchor(connectorB, RelPos(connectorB) - deltaAnchor / 2);
-				boxCollider.size = new Vector2(boxCollider.size.x, length + deltaLength);
+				capsuleCollider.size = new Vector2(capsuleCollider.size.x, length + deltaLength + capsuleCollider.size.x);
 			}
 			else
 				lockedLength = true;
