@@ -131,8 +131,6 @@ public class RopeSegment : MonoBehaviour
 			float lengthDiff = targetLength - length;
 			if (Mathf.Abs(lengthDiff) > 0.01f)
 			{
-				Debug.Log("Changing Length");
-
 				float maxDiff = Time.deltaTime * lengthChangeRate;
 
 				float deltaLength = Mathf.Clamp(lengthDiff, -maxDiff, maxDiff);

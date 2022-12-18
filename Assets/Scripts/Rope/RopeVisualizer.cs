@@ -6,10 +6,19 @@ using werignac.Curves;
 
 namespace werignac.Rope
 {
-	[RequireComponent(typeof(LineRenderer), typeof(RopeController))]
+	[RequireComponent(typeof(RopeController))]
 	public class RopeVisualizer : MonoBehaviour
 	{
-		LineRenderer lineRenderer;
+		/// <summary>
+		/// Primary line renderer. Used for rendering the rope most
+		/// of the time.
+		/// </summary>
+		LineRenderer p_lineRenderer;
+		/// <summary>
+		/// Secondary line renderer, Used for rendering the rope when
+		/// cut.
+		/// </summary>
+		LineRenderer s_lineRenderer;
 
 		[SerializeField]
 		private int resolution = 10;
@@ -24,20 +33,57 @@ namespace werignac.Rope
 		// Start is called before the first frame update
 		void Start()
 		{
-			lineRenderer = GetComponent<LineRenderer>();
+			LineRenderer[] renderers = GetComponentsInChildren<LineRenderer>();
+
+			p_lineRenderer = renderers[0];
+			s_lineRenderer = renderers[1];
+			s_lineRenderer.enabled = false;
 		}
 
 		private void RopeUpdate(RopeInfo info)
+		{
+			// Split info into two infos if there is a cut.
+			if (info.cut < 0)
+			{
+				SetLineRendererFromInfo(p_lineRenderer, info);
+				s_lineRenderer.enabled = false;
+			}
+			else
+			{
+				s_lineRenderer.enabled = true;
+
+				List<HingeJoint2D> p_joints = new List<HingeJoint2D>();
+				List<HingeJoint2D> s_joints = new List<HingeJoint2D>();
+
+				for (int i = 0; i < info.joints.Length; i++)
+				{
+					HingeJoint2D joint = info.joints[i];
+					if (i < info.cut)
+						p_joints.Add(joint);
+					else
+						s_joints.Add(joint);
+				}
+
+				RopeInfo p_info = new RopeInfo { joints = p_joints.ToArray(), needle_first = info.needle_first, needle_last = info.needle_last, cut = -1 };
+				RopeInfo s_info = new RopeInfo { joints = s_joints.ToArray(), needle_first = info.needle_first, needle_last = info.needle_last, cut = -1 };
+				SetLineRendererFromInfo(p_lineRenderer, p_info);
+				SetLineRendererFromInfo(s_lineRenderer, s_info);
+			}
+
+		}
+
+		private void SetLineRendererFromInfo(LineRenderer lineRenderer, RopeInfo info)
 		{
 			int positionCount = PositionCount(info.joints);
 
 			lineRenderer.positionCount = positionCount;
 
-#if UNITY_EDITOR
+
 			Vector3[] positions = new Vector3[positionCount];
 
 			Curve curve = null;
 
+#if UNITY_EDITOR
 			switch (v_spline)
 			{
 				case RopeSpline.BEZIER:
@@ -52,22 +98,12 @@ namespace werignac.Rope
 					curve = new InterpolationCurve(bezier, catmullRom);
 					break;
 			}
-
+#else
+			curve = new MultiCatmullRom(GenerateControlPointsForCatmullRom(info));
+#endif
 			for (int i = 0; i < positionCount; i++)
 				positions[i] = curve.Evaluate((float)i / positionCount);
-#else
-		Vector3[] controlPoints = new Vector3[joints.Length];
 
-		for (int i = 0; i < joints.Length; i++)
-			controlPoints[i] = GetJointWorldPosition(joints[i]);
-
-		Vector3[] positions = new Vector3[PositionCount];
-
-		Curve bezier = new MultiCatmullRom(controlPoints);
-
-		for (int i = 0; i < PositionCount; i++)
-			positions[i] = bezier.Evaluate((float)i / PositionCount);
-#endif
 			lineRenderer.SetPositions(positions);
 		}
 
