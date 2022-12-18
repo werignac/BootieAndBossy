@@ -296,7 +296,7 @@ MonoBehaviour:
   needle_first: {fileID: 737631493}
   needle_last: {fileID: 1028539765}
   ropeLength: 4
-  segmentsPerLength: 1
+  segmentsPerLength: 3
 --- !u!120 &211602626
 LineRenderer:
   m_ObjectHideFlags: 0
