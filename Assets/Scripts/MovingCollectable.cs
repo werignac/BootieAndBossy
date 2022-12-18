@@ -9,6 +9,11 @@ public class MovingCollectable : MonoBehaviour
 
 	[SerializeField]
 	private float moveVelocity = 5f;
+	
+	[SerializeField]
+	public bool isGood = true;
+
+	private const string collectableUpdateKey = "CollectableUpdate";
 
 	private void Start()
 	{
@@ -24,6 +29,6 @@ public class MovingCollectable : MonoBehaviour
 
 	private void FixedUpdate()
 	{
-		transform.rotation = Quaternion.LookRotation(Vector3.forward, Quaternion.Euler(0, 0, 90f) * rigid.velocity); 
+		BroadcastMessage(collectableUpdateKey, rigid.velocity, SendMessageOptions.DontRequireReceiver);
 	}
 }

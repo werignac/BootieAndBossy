@@ -59,6 +59,7 @@ GameObject:
   - component: {fileID: 4623960045920276549}
   - component: {fileID: 8932660459833674868}
   - component: {fileID: 4082698075936469700}
+  - component: {fileID: 2256745886406443002}
   m_Layer: 0
   m_Name: Good Collectable
   m_TagString: Untagged
@@ -117,6 +118,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveVelocity: 5
+  isGood: 1
+--- !u!114 &2256745886406443002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3247333239230824006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5f33aad89d12474ba8dee8caae60bbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultRight: 1
+  renderers:
+  - {fileID: 2183114093367706093}
 --- !u!1 &4929554886493206057
 GameObject:
   m_ObjectHideFlags: 0
@@ -190,7 +207,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 61ac40b257b3a994f841856ad38b2b6b, type: 3}
   m_Color: {r: 0.117271826, g: 0.6320754, b: 0.17787126, a: 1}
   m_FlipX: 0
   m_FlipY: 0
