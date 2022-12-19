@@ -15,6 +15,8 @@ public class NeedleController : MonoBehaviour
 	[SerializeField]
 	private float maxAngularVelocity = 30f;
 
+	private bool takeInput = true;
+
 	// Between-Frame Data
 	private float storedThrust = 0;
 	private float storedTorque = 0;
@@ -35,6 +37,9 @@ public class NeedleController : MonoBehaviour
 
 	private void FixedUpdate()
 	{
+		if (!takeInput)
+			return;
+
 		Vector2 thrustDirection = transform.up;
 		float torqueDirection = -1f;
 
@@ -50,5 +55,10 @@ public class NeedleController : MonoBehaviour
 		rigid.AddForce(Vector2.ClampMagnitude(velocityDiff, thrustRate * Time.fixedDeltaTime) * rigid.mass, ForceMode2D.Force);
 		float angularVelocityLimit = turnRate * Time.fixedDeltaTime;
 		rigid.AddTorque(Mathf.Clamp(angularVelocityDiff, -angularVelocityLimit, angularVelocityLimit) * rigid.mass, ForceMode2D.Force);
+	}
+
+	private void OnRopeCut()
+	{
+		takeInput = false;
 	}
 }

@@ -164,12 +164,15 @@ namespace werignac.Rope
 						ropeLength += lengthAddedPerCollectable;
 						// Destroy Collectable
 						Destroy(collectable.gameObject);
+						// Notify that a good Collectable was collected.
+						WerignacUtils.BroadcastToAll("OnCollectableCollected");
 					}
 					else // Bad
 					{
 						// Cut the rope.
 						Cut(collision.otherCollider.GetComponentInParent<RopeSegment>());
 						// End the game.
+						WerignacUtils.BroadcastToAll("OnRopeCut");
 					}
 				}
 			}
