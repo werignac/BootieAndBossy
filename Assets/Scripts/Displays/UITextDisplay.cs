@@ -17,6 +17,9 @@ namespace werignac.Displays
 
 		public void Display(string toDisplay)
 		{
+			if (text == null)
+				text = GetComponent<TextMeshProUGUI>();
+
 			text.text = toDisplay;
 		}
 
