@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using werignac.Utils;
 using System;
 
@@ -58,6 +59,10 @@ namespace werignac.Rope
 		/// </summary>
 		private HashSet<GameObject> collectedCollectables = new HashSet<GameObject>();
 
+		[SerializeField]
+		public UnityEvent onCollect = new UnityEvent();
+		[SerializeField]
+		public UnityEvent onCut = new UnityEvent();
 
 		private void Start()
 		{
@@ -137,6 +142,10 @@ namespace werignac.Rope
 			Destroy(segment.gameObject);
 
 			joints = segmentParent.GetComponentsInChildren<HingeJoint2D>();
+
+			// End the game.
+			onCut.Invoke();
+			WerignacUtils.BroadcastToAll("OnRopeCut");
 		}
 
 		private void FixedUpdate()
@@ -163,16 +172,15 @@ namespace werignac.Rope
 						// Increment point counter.
 						ropeLength += lengthAddedPerCollectable;
 						// Destroy Collectable
-						Destroy(collectable.gameObject);
+						collectable.HandleDestroy();
 						// Notify that a good Collectable was collected.
+						onCollect.Invoke();
 						WerignacUtils.BroadcastToAll("OnCollectableCollected");
 					}
 					else // Bad
 					{
 						// Cut the rope.
 						Cut(collision.otherCollider.GetComponentInParent<RopeSegment>());
-						// End the game.
-						WerignacUtils.BroadcastToAll("OnRopeCut");
 					}
 				}
 			}

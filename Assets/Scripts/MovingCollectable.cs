@@ -56,8 +56,9 @@ public class MovingCollectable : MonoBehaviour
 		checkMoving = null;
 	}
 
-	private void OnDestroy()
+	public void HandleDestroy()
 	{
 		onDestroy.Invoke();
+		Destroy(gameObject);
 	}
 }
