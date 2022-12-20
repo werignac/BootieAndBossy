@@ -29,6 +29,8 @@ public class MovingCollectable : MonoBehaviour
 
 	private void FixedUpdate()
 	{
+		rigid.velocity = Vector2.ClampMagnitude(rigid.velocity, moveVelocity);
+
 		BroadcastMessage(collectableUpdateKey, rigid.velocity, SendMessageOptions.DontRequireReceiver);
 	}
 }

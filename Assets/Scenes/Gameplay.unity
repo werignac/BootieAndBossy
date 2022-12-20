@@ -1074,8 +1074,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 109.7}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 0, y: 84.5}
+  m_SizeDelta: {x: 150, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &377409323
 MonoBehaviour:
@@ -1826,7 +1826,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &819784223
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1842,13 +1842,13 @@ MonoBehaviour:
   scoreSet:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 739982166}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
+      - m_Target: {fileID: 739982167}
+        m_TargetAssemblyTypeName: werignac.Displays.UITextDisplay, Assembly-CSharp
+        m_MethodName: Display
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2268,6 +2268,10 @@ PrefabInstance:
     - target: {fileID: 4082698075936469700, guid: d4828bb0130224944aa305f7edea90fa, type: 3}
       propertyPath: isGood
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4082698075936469700, guid: d4828bb0130224944aa305f7edea90fa, type: 3}
+      propertyPath: moveVelocity
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4623960045920276549, guid: d4828bb0130224944aa305f7edea90fa, type: 3}
       propertyPath: m_RootOrder
@@ -2714,7 +2718,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -134.4}
+  m_AnchoredPosition: {x: 0, y: -139.10016}
   m_SizeDelta: {x: 153.2, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1190550559
@@ -3419,8 +3423,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 49.7}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 0, y: 34.4}
+  m_SizeDelta: {x: 150, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1842044190
 MonoBehaviour:
@@ -3734,7 +3738,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 000
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

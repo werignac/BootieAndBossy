@@ -15,7 +15,7 @@ public class ScoreTracker : MonoBehaviour
 
 	private bool counting = true;
 
-	private const long collectableScore = 100;
+	private const long collectableScore = 25;
 	private const long timeScore = 1;
 
 	// Between-Frame Data
