@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class MovingCollectable : MonoBehaviour
@@ -14,6 +15,14 @@ public class MovingCollectable : MonoBehaviour
 	public bool isGood = true;
 
 	private const string collectableUpdateKey = "CollectableUpdate";
+
+	private Coroutine checkMoving = null;
+	[SerializeField]
+	private float timeStillUntilRandomMove = 5f;
+
+	private bool IsNotMoving { get { return rigid.velocity.magnitude < 0.5f; } }
+
+	public UnityEvent onDestroy = new UnityEvent();
 
 	private void Start()
 	{
@@ -32,5 +41,23 @@ public class MovingCollectable : MonoBehaviour
 		rigid.velocity = Vector2.ClampMagnitude(rigid.velocity, moveVelocity);
 
 		BroadcastMessage(collectableUpdateKey, rigid.velocity, SendMessageOptions.DontRequireReceiver);
+
+		if (IsNotMoving && checkMoving == null)
+			checkMoving = StartCoroutine(CheckMoving());
+	}
+
+	private IEnumerator CheckMoving()
+	{
+		yield return new WaitForSeconds(timeStillUntilRandomMove);
+
+		if (IsNotMoving)
+			rigid.velocity = Quaternion.Euler(0, 0, Random.Range(0f, 360f)) * Vector2.up * moveVelocity;
+
+		checkMoving = null;
+	}
+
+	private void OnDestroy()
+	{
+		onDestroy.Invoke();
 	}
 }

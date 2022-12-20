@@ -8,8 +8,11 @@ public class CollectableSpawner : MonoBehaviour
 	private BoundsManager boundsManager;
 
 	private float nextSpawn;
+	private float nextBadSpawn;
 	[SerializeField, Min(0)]
 	private float spawnTime = 5f;
+	[SerializeField, Range(0f, 90f)]
+	private float badSpawnTime = 30f;
 
 	[SerializeField]
 	private GameObject[] goodCollectables;
@@ -19,20 +22,59 @@ public class CollectableSpawner : MonoBehaviour
 	[SerializeField, Range(0, 1)]
 	private float badOdds = 0.333f;
 
+	private List<GameObject> activeGoodCollectibles = new List<GameObject>();
+	private List<GameObject> activeBadCollectibles = new List<GameObject>();
+
+	private int goodCollectiblesSpawned = 1;
+	private int badCollectiblesSpawned = 1;
+
+	[SerializeField, Range(5, 20)]
+	private int maxGoodCollectibles = 9;
+	[SerializeField, Range(1, 10)]
+	private int maxBadCollectibles = 4;
+
     // Start is called before the first frame update
     void Start()
     {
 		boundsManager = GetComponent<BoundsManager>();
 
 		nextSpawn = Time.time + spawnTime;
+		nextBadSpawn = Time.time + badSpawnTime;
     }
 
 	private void Update()
 	{
-		if (Time.time > nextSpawn)
+		if (Time.time > nextSpawn && maxGoodCollectibles > activeGoodCollectibles.Count)
 		{
-			InstantiateCollectable();
+			GameObject collectible = InstantiateGoodCollectable();
+			activeGoodCollectibles.Add(collectible);
+			collectible.GetComponent<MovingCollectable>().onDestroy.AddListener(() => { 
+				activeGoodCollectibles.Remove(collectible); 
+			});
 		}
+
+		if (Time.time > nextBadSpawn && maxBadCollectibles > activeBadCollectibles.Count)
+		{
+			GameObject collectible = InstantiateBadCollectable();
+			activeBadCollectibles.Add(collectible);
+			collectible.GetComponent<MovingCollectable>().onDestroy.AddListener(() => {
+				activeBadCollectibles.Remove(collectible);
+			});
+		}
+	}
+
+	private GameObject InstantiateGoodCollectable()
+	{
+		int collectableTypeCount = goodCollectables.Length;
+		nextSpawn = Time.time + spawnTime / Mathf.Sqrt(goodCollectiblesSpawned++);
+		return InstantiateCollectable(false, Mathf.Min((int)(collectableTypeCount * Random.value), collectableTypeCount));
+	}
+
+	private GameObject InstantiateBadCollectable()
+	{
+		int collectableTypeCount = badCollectables.Length;
+		nextBadSpawn = Time.time + badSpawnTime / Mathf.Sqrt(badCollectiblesSpawned++);
+		return InstantiateCollectable(true, Mathf.Min((int)(collectableTypeCount * Random.value), collectableTypeCount));
 	}
 
 	private GameObject InstantiateCollectable()
@@ -64,9 +106,7 @@ public class CollectableSpawner : MonoBehaviour
 	{
 		Vector2 spawnPoint = boundsManager.GetRandomPointOnPerimeter();
 		// TODO: Get max length of prefab To calc offset from camera.
-		nextSpawn = Time.time + spawnTime;
 
 		return Instantiate(spawnPrefab, spawnPoint, Quaternion.identity);
-		// TODO: Set movement direction here.
 	}
 }
