@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: f5256be0029c5d04a97f193f7c7a4fdc
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Cintaly
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 52141c2a3b1d93142851eccc41bf579b, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
