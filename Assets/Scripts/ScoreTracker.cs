@@ -42,7 +42,7 @@ public class ScoreTracker : MonoBehaviour
 		{
 			int scoreAddition = ((int)time) % 5;
 			Score += scoreAddition * timeScore;
-			time = time - scoreAddition;
+			time = time - scoreAddition * 5;
 		}
 	}
 

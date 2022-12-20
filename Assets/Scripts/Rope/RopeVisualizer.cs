@@ -50,8 +50,6 @@ namespace werignac.Rope
 			}
 			else
 			{
-				s_lineRenderer.enabled = true;
-
 				List<HingeJoint2D> p_joints = new List<HingeJoint2D>();
 				List<HingeJoint2D> s_joints = new List<HingeJoint2D>();
 
@@ -66,8 +64,22 @@ namespace werignac.Rope
 
 				RopeInfo p_info = new RopeInfo { joints = p_joints.ToArray(), needle_first = info.needle_first, needle_last = info.needle_last, cut = -1 };
 				RopeInfo s_info = new RopeInfo { joints = s_joints.ToArray(), needle_first = info.needle_first, needle_last = info.needle_last, cut = -1 };
-				SetLineRendererFromInfo(p_lineRenderer, p_info);
-				SetLineRendererFromInfo(s_lineRenderer, s_info);
+
+				if (p_info.joints.Length > 0)
+				{
+					p_lineRenderer.enabled = true;
+					SetLineRendererFromInfo(p_lineRenderer, p_info);
+				}
+				else
+					p_lineRenderer.enabled = false;
+
+				if (s_info.joints.Length > 0)
+				{
+					s_lineRenderer.enabled = true;
+					SetLineRendererFromInfo(s_lineRenderer, s_info);
+				}
+				else
+					s_lineRenderer.enabled = false;
 			}
 
 		}
