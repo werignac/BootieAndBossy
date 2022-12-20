@@ -14,6 +14,9 @@ public class BoundsManager : MonoBehaviour
 	private Vector2 p3;
 	private Vector2 p4;
 
+	private int screenWidth = 0;
+	private int screenHeight = 0;
+
 	private float Perimeter { get { return 2 * Vector2.Distance(p1, p2) + 2 * Vector2.Distance(p2, p3); } }
 
     // Start is called before the first frame update
@@ -21,10 +24,23 @@ public class BoundsManager : MonoBehaviour
     {
         hardBounds = GetComponent<PolygonCollider2D>();
 		triggerBounds = GetComponentInChildren<BoxCollider2D>();
+		screenWidth = Screen.width;
+		screenHeight = Screen.height;
 		CreateMargin();
     }
 
-    private void CreateMargin()
+	private void Update()
+	{
+		if (Screen.width != screenWidth || Screen.height != screenHeight)
+		{
+			screenWidth = Screen.width;
+			screenHeight = Screen.height;
+			CreateMargin();
+		}
+	}
+
+
+	private void CreateMargin()
 	{
 		Camera camera = Camera.main;
 		p1 = camera.ScreenToWorldPoint(new Vector3(0, 0));

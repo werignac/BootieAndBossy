@@ -51,7 +51,7 @@ public class MovingCollectable : MonoBehaviour
 		yield return new WaitForSeconds(timeStillUntilRandomMove);
 
 		if (IsNotMoving)
-			rigid.velocity = Quaternion.Euler(0, 0, Random.Range(0f, 360f)) * Vector2.up * moveVelocity;
+			rigid.velocity = Quaternion.Euler(0, 0, Random.Range(-30f, 30f)) * -transform.position.normalized * moveVelocity;
 
 		checkMoving = null;
 	}
