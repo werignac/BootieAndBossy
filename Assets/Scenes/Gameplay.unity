@@ -3560,12 +3560,14 @@ MonoBehaviour:
   spawnTime: 5
   badSpawnTime: 30
   goodCollectables:
-  - {fileID: 3247333239230824006, guid: d4828bb0130224944aa305f7edea90fa, type: 3}
+  - {fileID: 168032209164982619, guid: 50b311f519e50b241b55cf4d4781397e, type: 3}
+  - {fileID: 7210513370981699214, guid: 5eb755ef26758534e892685904a5eb1c, type: 3}
+  - {fileID: 3483798244341410733, guid: 69fef84d77230344a864aba1433c47b7, type: 3}
   badCollectables:
   - {fileID: 5726116256980315995, guid: 5aa2cb3f12caf36489e8e22311e931ad, type: 3}
   badOdds: 0
-  maxGoodCollectibles: 9
-  maxBadCollectibles: 4
+  maxGoodCollectibles: 3
+  maxBadCollectibles: 3
 --- !u!1 &1674221965
 GameObject:
   m_ObjectHideFlags: 0

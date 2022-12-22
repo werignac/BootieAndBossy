@@ -28,7 +28,7 @@ public class CollectableSpawner : MonoBehaviour
 	private int goodCollectiblesSpawned = 1;
 	private int badCollectiblesSpawned = 1;
 
-	[SerializeField, Range(5, 20)]
+	[SerializeField, Range(1, 20)]
 	private int maxGoodCollectibles = 9;
 	[SerializeField, Range(1, 10)]
 	private int maxBadCollectibles = 4;
