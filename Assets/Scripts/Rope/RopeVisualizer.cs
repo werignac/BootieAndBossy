@@ -65,7 +65,7 @@ namespace werignac.Rope
 				RopeInfo p_info = new RopeInfo { joints = p_joints.ToArray(), needle_first = info.needle_first, needle_last = info.needle_last, cut = -1 };
 				RopeInfo s_info = new RopeInfo { joints = s_joints.ToArray(), needle_first = info.needle_first, needle_last = info.needle_last, cut = -1 };
 
-				if (p_info.joints.Length > 0)
+				if (p_info.joints.Length > 1)
 				{
 					p_lineRenderer.enabled = true;
 					SetLineRendererFromInfo(p_lineRenderer, p_info);
@@ -73,7 +73,7 @@ namespace werignac.Rope
 				else
 					p_lineRenderer.enabled = false;
 
-				if (s_info.joints.Length > 0)
+				if (s_info.joints.Length > 1)
 				{
 					s_lineRenderer.enabled = true;
 					SetLineRendererFromInfo(s_lineRenderer, s_info);
