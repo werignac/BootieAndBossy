@@ -11,11 +11,12 @@ public class ScoreTracker : MonoBehaviour
 	private UnityEvent<long> onScoreChange = new UnityEvent<long>();
 	[SerializeField]
 	private UnityEvent<long, bool, long> onScoreFinish = new UnityEvent<long, bool, long>();
-	private long _score;
+	private long _score = 12;
 
 	private bool counting = true;
 
-	private const long collectableScore = 25;
+	private const long collectableScore = 2;
+	private const bool countTime = false;
 	private const long timeScore = 1;
 
 	// Between-Frame Data
@@ -31,9 +32,14 @@ public class ScoreTracker : MonoBehaviour
 		}
 	}
 
+	private void Start()
+	{
+		onScoreChange.Invoke(Score);
+	}
+
 	private void Update()
 	{
-		if (!counting)
+		if (!counting || !countTime)
 			return;
 
 		time += Time.deltaTime;
