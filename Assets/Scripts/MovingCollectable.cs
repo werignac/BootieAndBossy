@@ -20,6 +20,9 @@ public class MovingCollectable : MonoBehaviour
 	[SerializeField]
 	private float timeStillUntilRandomMove = 5f;
 
+	[SerializeField]
+	private bool forTutorial = false;
+
 	private bool IsNotMoving { get { return rigid.velocity.magnitude < 0.5f; } }
 
 	public UnityEvent onDestroy = new UnityEvent();
@@ -33,7 +36,8 @@ public class MovingCollectable : MonoBehaviour
 
 	private void InitializeMoveDirection()
 	{
-		rigid.velocity = (Vector2.zero - (Vector2)transform.position).normalized * moveVelocity;
+		if (!forTutorial)
+			rigid.velocity = (Vector2.zero - (Vector2)transform.position).normalized * moveVelocity;
 	}
 
 	private void FixedUpdate()
@@ -42,8 +46,11 @@ public class MovingCollectable : MonoBehaviour
 
 		BroadcastMessage(collectableUpdateKey, rigid.velocity, SendMessageOptions.DontRequireReceiver);
 
-		if (IsNotMoving && checkMoving == null)
-			checkMoving = StartCoroutine(CheckMoving());
+		if (!forTutorial)
+		{
+			if (IsNotMoving && checkMoving == null)
+				checkMoving = StartCoroutine(CheckMoving());
+		}
 	}
 
 	private IEnumerator CheckMoving()
