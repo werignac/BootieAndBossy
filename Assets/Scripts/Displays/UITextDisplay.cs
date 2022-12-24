@@ -9,6 +9,8 @@ namespace werignac.Displays
 	public class UITextDisplay : MonoBehaviour
 	{
 		[SerializeField]
+		private string prefix = "";
+		[SerializeField]
 		private string postfix = "";
 		private TextMeshProUGUI text;
 
@@ -22,7 +24,7 @@ namespace werignac.Displays
 			if (text == null)
 				text = GetComponent<TextMeshProUGUI>();
 
-			text.text = toDisplay + postfix;
+			text.text = prefix + toDisplay + postfix;
 		}
 
 		public void Display(long toDisplay)
