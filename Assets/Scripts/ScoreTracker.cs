@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 public class ScoreTracker : MonoBehaviour
 {
-	private const string highscoreKey = "HighScore";
+	public static readonly string highscoreKey = "HighScore";
 
 	[SerializeField]
 	private UnityEvent<long> onScoreChange = new UnityEvent<long>();
