@@ -2828,6 +2828,7 @@ GameObject:
   - component: {fileID: 587177928}
   - component: {fileID: 587177929}
   - component: {fileID: 587177930}
+  - component: {fileID: 587177931}
   m_Layer: 5
   m_Name: Master Slider
   m_TagString: Untagged
@@ -3075,6 +3076,21 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!166 &587177931
+AudioChorusFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 587177925}
+  m_Enabled: 1
+  m_DryMix: 0.5
+  m_WetMix1: 0.5
+  m_WetMix2: 0.5
+  m_WetMix3: 0.5
+  m_Delay: 40
+  m_Rate: 0.8
+  m_Depth: 0.03
 --- !u!1 &708904834
 GameObject:
   m_ObjectHideFlags: 0
@@ -3636,6 +3652,7 @@ GameObject:
   - component: {fileID: 1045924005}
   - component: {fileID: 1045924006}
   - component: {fileID: 1045924007}
+  - component: {fileID: 1045924008}
   m_Layer: 5
   m_Name: SFX Slider
   m_TagString: Untagged
@@ -3883,6 +3900,21 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!166 &1045924008
+AudioChorusFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1045924002}
+  m_Enabled: 1
+  m_DryMix: 0.5
+  m_WetMix1: 0.5
+  m_WetMix2: 0.5
+  m_WetMix3: 0.5
+  m_Delay: 40
+  m_Rate: 0.8
+  m_Depth: 0.03
 --- !u!1 &1082863914
 GameObject:
   m_ObjectHideFlags: 0
@@ -5021,6 +5053,7 @@ GameObject:
   - component: {fileID: 1488069631}
   - component: {fileID: 1488069632}
   - component: {fileID: 1488069633}
+  - component: {fileID: 1488069634}
   m_Layer: 5
   m_Name: Music Slider
   m_TagString: Untagged
@@ -5268,6 +5301,21 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!166 &1488069634
+AudioChorusFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1488069628}
+  m_Enabled: 1
+  m_DryMix: 0.5
+  m_WetMix1: 0.5
+  m_WetMix2: 0.5
+  m_WetMix3: 0.5
+  m_Delay: 40
+  m_Rate: 0.8
+  m_Depth: 0.03
 --- !u!1 &1490518098
 GameObject:
   m_ObjectHideFlags: 0
