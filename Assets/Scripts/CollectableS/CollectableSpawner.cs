@@ -33,6 +33,9 @@ public class CollectableSpawner : MonoBehaviour
 	[SerializeField, Range(1, 10)]
 	private int maxBadCollectibles = 4;
 
+	[SerializeField]
+	private GameObject warningPrefab;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -55,11 +58,7 @@ public class CollectableSpawner : MonoBehaviour
 
 		if (Time.time > nextBadSpawn && maxBadCollectibles > activeBadCollectibles.Count)
 		{
-			GameObject collectible = InstantiateBadCollectable();
-			activeBadCollectibles.Add(collectible);
-			collectible.GetComponent<MovingCollectable>().onDestroy.AddListener(() => {
-				activeBadCollectibles.Remove(collectible);
-			});
+			StartCoroutine(SpawnBadCollectibleCoroutine());
 		}
 	}
 
@@ -104,9 +103,37 @@ public class CollectableSpawner : MonoBehaviour
 
 	private GameObject InstantiateCollectable(GameObject spawnPrefab)
 	{
-		Vector2 spawnPoint = boundsManager.GetRandomPointOnPerimeter();
+		Vector2 spawnPoint = boundsManager.GetRandomPointOnPerimeter(out Vector2 _);
 		// TODO: Get max length of prefab To calc offset from camera.
 
 		return Instantiate(spawnPrefab, spawnPoint, Quaternion.identity);
+	}
+
+	private IEnumerator SpawnBadCollectibleCoroutine()
+	{
+		nextBadSpawn = Time.time + badSpawnTime / Mathf.Sqrt(badCollectiblesSpawned++);
+
+		// Temporarily place an entry to prevent multiple spawns during wait.
+		int tempIndex = activeBadCollectibles.Count;
+		activeBadCollectibles.Add(null);
+
+		Vector2 spawnPoint = boundsManager.GetRandomPointOnPerimeter(out Vector2 normal);
+
+		Instantiate(warningPrefab, spawnPoint + normal, Quaternion.identity);
+
+		yield return new WaitForSeconds(2.5f);
+
+		int badCount = badCollectables.Length;
+
+		GameObject prefab = badCollectables[Random.Range(0, badCount)];
+
+		GameObject collectible = Instantiate(prefab, spawnPoint, Quaternion.identity);
+
+		activeBadCollectibles.RemoveAt(tempIndex);
+		activeBadCollectibles.Add(collectible);
+		
+		collectible.GetComponent<MovingCollectable>().onDestroy.AddListener(() => {
+			activeBadCollectibles.Remove(collectible);
+		});
 	}
 }

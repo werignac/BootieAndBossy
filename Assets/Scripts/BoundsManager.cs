@@ -55,16 +55,17 @@ public class BoundsManager : MonoBehaviour
 		triggerBounds.size = new Vector2(p2.x - p1.x, p3.y - p2.y);
 	}
 
-	public Vector2 GetRandomPointOnPerimeter()
+	public Vector2 GetRandomPointOnPerimeter(out Vector2 normal)
 	{
-		return GetPointOnPerimeter(Random.value);
+		return GetPointOnPerimeter(Random.value, out normal);
 	}
 
-	private Vector2 GetPointOnPerimeter(float t)
+	private Vector2 GetPointOnPerimeter(float t, out Vector2 normal)
 	{
+		normal = Vector2.zero;
 		Vector2[] startPoints = new Vector2[] { p1, p2, p3, p4 };
 		Vector2[] endPoints = new Vector2[] { p2, p3, p4, p1 };
-
+		Vector2[] normals = new Vector2[] { p4, p1, p2, p3 };
 		float perimeterTraversal = 0f;
 
 		Vector2 startPoint = Vector2.zero;
@@ -79,7 +80,10 @@ public class BoundsManager : MonoBehaviour
 			perimeterTraversal += edgeLength;
 
 			if (perimeterTraversal / Perimeter >= t)
+			{
+				normal = (normals[i] - startPoint).normalized;
 				break;
+			}
 		}
 
 		float t_onEdge = (t - (perimeterTraversal - edgeLength) / Perimeter) * (Perimeter / edgeLength);

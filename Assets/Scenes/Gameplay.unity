@@ -1049,7 +1049,7 @@ Transform:
   - {fileID: 64753762}
   - {fileID: 1143628496}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &739982166
 GameObject:
@@ -2794,7 +2794,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 584123780418751400, guid: 177f2543a5838ce46b88f74499580fdb, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 584123780418751400, guid: 177f2543a5838ce46b88f74499580fdb, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2836,6 +2836,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 584123780418751403, guid: 177f2543a5838ce46b88f74499580fdb, type: 3}
+      propertyPath: warningPrefab
+      value: 
+      objectReference: {fileID: 4655763885552859044, guid: a2f208e6314f40845875d3fc495f958e, type: 3}
+    - target: {fileID: 584123780418751403, guid: 177f2543a5838ce46b88f74499580fdb, type: 3}
+      propertyPath: badCollectables.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 584123780418751403, guid: 177f2543a5838ce46b88f74499580fdb, type: 3}
+      propertyPath: badCollectables.Array.data[1]
+      value: 
+      objectReference: {fileID: 8969950300839461297, guid: 2782fa620632df74ea82f29e1f218dcf, type: 3}
     - target: {fileID: 584123780418751405, guid: 177f2543a5838ce46b88f74499580fdb, type: 3}
       propertyPath: m_Name
       value: Bounds Manager
