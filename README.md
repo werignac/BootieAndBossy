@@ -1,5 +1,5 @@
 # Bootie and Bossy
-## A Game about Siterhood and Cooperation
+## A Game about Sisterhood and Cooperation
 Developed in Unity by werignac.
 
 ### Razor Pitch
