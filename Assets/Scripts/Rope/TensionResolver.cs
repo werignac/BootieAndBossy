@@ -13,17 +13,19 @@ public class TensionResolver : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-		Rigidbody2D attachedBody = _hinge.attachedRigidbody;
-		Rigidbody2D connectedBody = _hinge.connectedBody;
+		// Make sure there are two objects on the hinge. Otherwise, there isn't an angle.
+		if (_hinge.attachedRigidbody && _hinge.connectedBody)
+		{
+			Rigidbody2D attachedBody = _hinge.attachedRigidbody;
+			Rigidbody2D connectedBody = _hinge.connectedBody;
 
-		float hingeAngle = GetAngle();
+			float hingeAngle = GetAngle();
 
+			float resolutionTorque = -hingeAngle * tensionResolveFactor;
 
-		float resolutionTorque = -hingeAngle * tensionResolveFactor;
-
-		attachedBody.AddTorque(-resolutionTorque);
-		connectedBody.AddTorque(resolutionTorque);
-
+			attachedBody.AddTorque(-resolutionTorque);
+			connectedBody.AddTorque(resolutionTorque);
+		}
     }
 
 	public float GetAngle()
