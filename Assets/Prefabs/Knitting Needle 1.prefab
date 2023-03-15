@@ -143,6 +143,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lowerBound: 0.8
   upperBound: 1.2
+  waitForFinish: 1
   source: {fileID: 2851037134523266437}
 --- !u!1 &5034847013078946817
 GameObject:
@@ -408,9 +409,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33a9a159ad1fe0944b07ea8247663678, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thrustRate: 1000
+  thrustRate: 1500
   maxVelocity: 100
-  turnRate: 180
+  turnRate: 360
   maxAngularVelocity: 360
 --- !u!1 &8585543717485336150
 GameObject:

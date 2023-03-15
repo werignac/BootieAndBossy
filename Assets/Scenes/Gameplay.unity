@@ -1664,7 +1664,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.05000305, y: 28.399994}
+  m_AnchoredPosition: {x: 0.049987793, y: 28.399994}
   m_SizeDelta: {x: -139.9, y: -337.69995}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1028050542
@@ -1881,7 +1881,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -12.749954}
+  m_AnchoredPosition: {x: 0, y: -12.749939}
   m_SizeDelta: {x: -506.79996, y: -142.30002}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1044377710
@@ -3037,9 +3037,25 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 584123780418751403, guid: 177f2543a5838ce46b88f74499580fdb, type: 3}
+      propertyPath: goodCollectables.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 584123780418751403, guid: 177f2543a5838ce46b88f74499580fdb, type: 3}
       propertyPath: badCollectables.Array.data[1]
       value: 
       objectReference: {fileID: 8969950300839461297, guid: 2782fa620632df74ea82f29e1f218dcf, type: 3}
+    - target: {fileID: 584123780418751403, guid: 177f2543a5838ce46b88f74499580fdb, type: 3}
+      propertyPath: goodCollectables.Array.data[4]
+      value: 
+      objectReference: {fileID: 1485677470605900660, guid: 050adfc2fc8fcff458d537700a584b42, type: 3}
+    - target: {fileID: 584123780418751403, guid: 177f2543a5838ce46b88f74499580fdb, type: 3}
+      propertyPath: goodCollectables.Array.data[5]
+      value: 
+      objectReference: {fileID: 3712842702249549406, guid: d33c982f698d808479f0452e0886adb5, type: 3}
+    - target: {fileID: 584123780418751403, guid: 177f2543a5838ce46b88f74499580fdb, type: 3}
+      propertyPath: goodCollectables.Array.data[6]
+      value: 
+      objectReference: {fileID: 8263656772074726737, guid: 747cf16d4700d2d4ca69a437b6d22dc6, type: 3}
     - target: {fileID: 584123780418751405, guid: 177f2543a5838ce46b88f74499580fdb, type: 3}
       propertyPath: m_Name
       value: Bounds Manager

@@ -822,6 +822,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2018754773714001558}
     - target: {fileID: 3384056644287403459, guid: 6217769df3442be46a60a77138f73447, type: 3}
+      propertyPath: m_Motor.m_MaximumMotorForce
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3384056644287403459, guid: 6217769df3442be46a60a77138f73447, type: 3}
       propertyPath: m_AutoConfigureConnectedAnchor
       value: 0
       objectReference: {fileID: 0}
@@ -1022,14 +1026,28 @@ HingeJoint2D:
   m_AutoConfigureConnectedAnchor: 0
   m_Anchor: {x: 0, y: -0.4}
   m_ConnectedAnchor: {x: 0.00000000769322, y: 0.08800018}
-  m_UseMotor: 0
+  m_UseMotor: 1
   m_Motor:
     m_MotorSpeed: 0
-    m_MaximumMotorForce: 10000
+    m_MaximumMotorForce: 0.1
   m_UseLimits: 0
   m_AngleLimits:
     m_LowerAngle: -45
     m_UpperAngle: 45
+--- !u!114 &7928430137527747148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2568003457313636850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19d5013d4223a9643adddd32c054f2b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tensionResolveFactor: 0
+  _hinge: {fileID: 7719719795197000963}
 --- !u!233 &5032598680835198541 stripped
 HingeJoint2D:
   m_CorrespondingSourceObject: {fileID: 3384056644287403459, guid: 6217769df3442be46a60a77138f73447, type: 3}

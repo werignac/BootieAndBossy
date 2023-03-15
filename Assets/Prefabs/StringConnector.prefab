@@ -46,8 +46,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   triggerEnterMessage: OnRopeCollisionEnter
+  onCollisionEnter:
+    m_PersistentCalls:
+      m_Calls: []
   triggerStayMessage: OnRopeCollisionStay
+  onCollisionStay:
+    m_PersistentCalls:
+      m_Calls: []
   triggerExitMessage: OnRopeCollisionExit
+  onCollisionExit:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!70 &6236524016795794135
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -192,6 +201,7 @@ GameObject:
   - component: {fileID: 7946810761610324103}
   - component: {fileID: 113258437052215112}
   - component: {fileID: 3384056644287403459}
+  - component: {fileID: 1909158111808014542}
   m_Layer: 9
   m_Name: StringConnector
   m_TagString: Untagged
@@ -267,11 +277,25 @@ HingeJoint2D:
   m_AutoConfigureConnectedAnchor: 0
   m_Anchor: {x: 0, y: 0.4}
   m_ConnectedAnchor: {x: 0, y: 0}
-  m_UseMotor: 0
+  m_UseMotor: 1
   m_Motor:
     m_MotorSpeed: 0
-    m_MaximumMotorForce: 10000
+    m_MaximumMotorForce: 0.1
   m_UseLimits: 0
   m_AngleLimits:
-    m_LowerAngle: -45
-    m_UpperAngle: 45
+    m_LowerAngle: -90
+    m_UpperAngle: 90
+--- !u!114 &1909158111808014542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5224903209933511292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19d5013d4223a9643adddd32c054f2b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tensionResolveFactor: 0.01
+  _hinge: {fileID: 3384056644287403459}
