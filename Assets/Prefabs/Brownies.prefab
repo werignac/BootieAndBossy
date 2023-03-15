@@ -1,0 +1,95 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &6899145661693303575
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2183114093367706093, guid: d4828bb0130224944aa305f7edea90fa, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 7f587207a62b2224db70f931067b4cb6, type: 3}
+    - target: {fileID: 2256745886406443002, guid: d4828bb0130224944aa305f7edea90fa, type: 3}
+      propertyPath: defaultRight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3247333239230824006, guid: d4828bb0130224944aa305f7edea90fa, type: 3}
+      propertyPath: m_Name
+      value: Brownies
+      objectReference: {fileID: 0}
+    - target: {fileID: 3858117919826036099, guid: d4828bb0130224944aa305f7edea90fa, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.063083
+      objectReference: {fileID: 0}
+    - target: {fileID: 3858117919826036099, guid: d4828bb0130224944aa305f7edea90fa, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.063083
+      objectReference: {fileID: 0}
+    - target: {fileID: 3858117919826036099, guid: d4828bb0130224944aa305f7edea90fa, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.063083
+      objectReference: {fileID: 0}
+    - target: {fileID: 4623960045920276549, guid: d4828bb0130224944aa305f7edea90fa, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4623960045920276549, guid: d4828bb0130224944aa305f7edea90fa, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4623960045920276549, guid: d4828bb0130224944aa305f7edea90fa, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4623960045920276549, guid: d4828bb0130224944aa305f7edea90fa, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4623960045920276549, guid: d4828bb0130224944aa305f7edea90fa, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4623960045920276549, guid: d4828bb0130224944aa305f7edea90fa, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4623960045920276549, guid: d4828bb0130224944aa305f7edea90fa, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4623960045920276549, guid: d4828bb0130224944aa305f7edea90fa, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4623960045920276549, guid: d4828bb0130224944aa305f7edea90fa, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4623960045920276549, guid: d4828bb0130224944aa305f7edea90fa, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4623960045920276549, guid: d4828bb0130224944aa305f7edea90fa, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4623960045920276549, guid: d4828bb0130224944aa305f7edea90fa, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4623960045920276549, guid: d4828bb0130224944aa305f7edea90fa, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4623960045920276549, guid: d4828bb0130224944aa305f7edea90fa, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4623960045920276549, guid: d4828bb0130224944aa305f7edea90fa, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d4828bb0130224944aa305f7edea90fa, type: 3}
