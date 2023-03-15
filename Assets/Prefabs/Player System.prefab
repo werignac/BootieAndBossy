@@ -805,6 +805,10 @@ PrefabInstance:
       propertyPath: connectorB.isIncoming
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1909158111808014542, guid: 6217769df3442be46a60a77138f73447, type: 3}
+      propertyPath: tensionResolveFactor
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3254551373329549413, guid: 6217769df3442be46a60a77138f73447, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -887,6 +891,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
+    - {fileID: 1909158111808014542, guid: 6217769df3442be46a60a77138f73447, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 6217769df3442be46a60a77138f73447, type: 3}
 --- !u!4 &5903295092539793401 stripped
 Transform:
@@ -1034,20 +1039,6 @@ HingeJoint2D:
   m_AngleLimits:
     m_LowerAngle: -45
     m_UpperAngle: 45
---- !u!114 &7928430137527747148
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2568003457313636850}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19d5013d4223a9643adddd32c054f2b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tensionResolveFactor: 0
-  _hinge: {fileID: 7719719795197000963}
 --- !u!233 &5032598680835198541 stripped
 HingeJoint2D:
   m_CorrespondingSourceObject: {fileID: 3384056644287403459, guid: 6217769df3442be46a60a77138f73447, type: 3}
