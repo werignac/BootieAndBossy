@@ -2068,7 +2068,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &399921276
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3108,7 +3108,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 118e53165122d044d80eaf9fd0225b44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundType: 0
+  query:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1872590395}
+        m_TargetAssemblyTypeName: AudioSettingsManager, Assembly-CSharp
+        m_MethodName: GetMaster
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onSliderChange:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1872590395}
+        m_TargetAssemblyTypeName: AudioSettingsManager, Assembly-CSharp
+        m_MethodName: SetMaster
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!82 &587177929
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3932,7 +3961,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 118e53165122d044d80eaf9fd0225b44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundType: 2
+  query:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1872590395}
+        m_TargetAssemblyTypeName: AudioSettingsManager, Assembly-CSharp
+        m_MethodName: GetSFX
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onSliderChange:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1872590395}
+        m_TargetAssemblyTypeName: AudioSettingsManager, Assembly-CSharp
+        m_MethodName: SetSFX
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!82 &1045924006
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4720,7 +4778,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 143.02, y: 87.200005}
+  m_AnchoredPosition: {x: 143.02002, y: 87.200005}
   m_SizeDelta: {x: 111.45, y: 39.85}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1267694982
@@ -5292,7 +5350,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1487637468
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5471,7 +5529,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 118e53165122d044d80eaf9fd0225b44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundType: 1
+  query:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1872590395}
+        m_TargetAssemblyTypeName: AudioSettingsManager, Assembly-CSharp
+        m_MethodName: GetMusic
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onSliderChange:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1872590395}
+        m_TargetAssemblyTypeName: AudioSettingsManager, Assembly-CSharp
+        m_MethodName: SetMusic
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!82 &1488069632
 AudioSource:
   m_ObjectHideFlags: 0
