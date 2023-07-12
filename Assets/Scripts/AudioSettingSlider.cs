@@ -1,58 +1,40 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(Slider))]
 public class AudioSettingSlider : MonoBehaviour
 {
 	private Slider slider;
-	
-	private enum SoundType { MASTER, MUSIC, SFX}
 
 	[SerializeField]
-	private SoundType soundType;
+	private UnityEvent<Action<float>> query;
+
+	[SerializeField]
+	private UnityEvent<float> onSliderChange = new UnityEvent<float>();
 
 	private void Awake()
 	{
 		slider = GetComponent<Slider>();
-		slider.value = GetAudioValue();
+		QueryAudioValue();
 	}
 
-	private float GetAudioValue()
+	private void QueryAudioValue()
 	{
-		float value = 1f;
+		this.query.Invoke(this.ReceiveAudioValue);
+	}
 
-		switch(soundType)
-		{
-			case SoundType.MASTER:
-				value = AudioSettingsManager.instance.GetMaster();
-				break;
-			case SoundType.MUSIC:
-				value = AudioSettingsManager.instance.GetMusic();
-				break;
-			case SoundType.SFX:
-				value = AudioSettingsManager.instance.GetSFX();
-				break;
-		}
-
-		return value;
+	private void ReceiveAudioValue(float newValue)
+	{
+		slider.value = newValue;
 	}
 
 	public void ChangeAudioValue(float newValue)
 	{
-		switch (soundType)
-		{
-			case SoundType.MASTER:
-				AudioSettingsManager.instance.SetMaster(newValue);
-				break;
-			case SoundType.MUSIC:
-				AudioSettingsManager.instance.SetMusic(newValue);
-				break;
-			case SoundType.SFX:
-				AudioSettingsManager.instance.SetSFX(newValue);
-				break;
-		}
+		this.onSliderChange.Invoke(newValue);
 	}
 
 

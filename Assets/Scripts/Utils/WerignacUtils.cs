@@ -70,5 +70,7 @@ namespace werignac.Utils
 		}
 		
 		#endregion
+
+		// TODO: Add a query class
 	}
 }
