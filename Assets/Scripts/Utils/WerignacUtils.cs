@@ -28,5 +28,47 @@ namespace werignac.Utils
 				root.BroadcastMessage(methodName, parameter, SendMessageOptions.DontRequireReceiver);
 		}
 		#endregion
+
+		#region PercolateUp
+
+		public class Percolation<T>
+		{
+			private bool halt = false;
+			private T data;
+
+			public Percolation( T _data)
+			{
+				data = _data;
+			}
+
+			public T GetData()
+			{
+				return data;
+			}
+
+			public void Halt()
+			{
+				halt = true;
+			}
+
+			public bool GetHalt()
+			{
+				return halt;
+			}
+		}
+
+		public static void Percolate<T>(this GameObject obj,string recieverFunction, T data)
+		{
+			GameObject current = obj.transform.parent.gameObject;
+			Percolation<T> percolation = new Percolation<T>(data);
+
+			while(current && ! percolation.GetHalt())
+			{
+				current.SendMessage(recieverFunction, percolation, SendMessageOptions.DontRequireReceiver);
+				current = current.transform.parent.gameObject;
+			}
+		}
+		
+		#endregion
 	}
 }
