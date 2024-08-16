@@ -15,7 +15,7 @@ https://www.bootieandbossy.com/
 ### Current Features
 - Two knitting needles controlled by WASD and the arrow keys.
 - A resizeable thread of yarn that connects the needles (when a collectable is collected, the yarn grows in length).
-- Collectable items that dissapear when they come in contact with the yarn.
+- Collectable items that disappear when they come in contact with the yarn.
 - Bad items that cut the yarn when they come into contact with it.
 - All major 2D art assets implemented.
 - All major sound effects and music implemented.
